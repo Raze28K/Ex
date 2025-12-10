@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(135deg, #FFF7B2 0%, #FFD66B 40%, #FFB84D 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #FF6F00;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 50px;
+    
+    
+    
+}
+
+.btn1 {
+
+    width: 120px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4DE6FF 0%, #1AB8FF 100%);
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 400px;
+    left: 850px;
+}
+
+.btn1:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.text_div{
+    border-radius: 10px;
+    position: absolute;
+    width: 1000px;
+    top: 600px;
+    left: 450px;
+    background-color: azure;
+}

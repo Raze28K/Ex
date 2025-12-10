@@ -1,0 +1,149 @@
+body {
+    background: linear-gradient(135deg, #FFF7B2 0%, #FFD66B 40%, #FFB84D 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.main{
+    position: absolute;
+    left: 25px;
+    top: 40px;
+    background-color: white;
+    width: 1870px;
+    height: 900px;
+    border-radius: 15px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 15px;
+}
+
+/* кнопка */
+#startBtn {
+    padding: 20px 60px;
+    font-size: 30px;
+    border: none;
+    border-radius: 15px;
+    background: #FFD66B;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.map-area {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#map {
+    width: 50%;
+    height: 100%;
+    border: 0;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.lvl{
+    position: absolute;
+    left: 950px;
+    top:-10px;
+}
+
+.xp-container {
+    position: absolute;
+    left: 1200px;
+    top: 1px;
+    width: 600px;      /* ширина всей шкалы */
+    height: 50px;      /* высота */
+    background-color: #ddd;  /* фон */
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.xp-bar {
+    height: 100%;
+    width: 0%;         /* начальная заполненность */
+    background: linear-gradient(90deg, #FFD66B, #FFB84D);
+    border-radius: 15px 0 0 15px;
+    transition: width 0.5s ease;
+}
+.xpText{
+    position: absolute;
+    left: 1210px;
+    top: 3px;
+}
+
+.action-area{
+    
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    left: 400px;
+    top: 800px;
+}
+.btnDone{
+    background-color:  #FFB84D;
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    border-radius: 20px;
+   
+   
+}
+hr {
+    position: absolute;
+    top: 100px; /* значение в пределах видимой области */
+    left: 50%;
+    width: 50%;
+    border: 1px solid black;
+    z-index: 10; /* чтобы была поверх */
+}
+.table{
+    position: absolute;
+    left: 960px;
+    top: 110px;
+}
+.table2{
+    background-color: rgb(255, 247, 228);
+    position: absolute;
+    left: 1000px;
+    top: 300px;
+    width: 45%;
+    height: 50%;
+    border-radius: 15px;
+    border: solid black;
+    border-color: black;
+}
+
+.btn2{
+
+    background-color:  #FFB84D;
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 830px;
+    left: 1750px;
+    border-radius: 10px;
+    z-index: 10;
+    border-color: rgb(255, 255, 255);
+    
+}

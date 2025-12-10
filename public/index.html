@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGame Iframe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+    
+        <div class="overlay" id="overlay">
+            <button id="startBtn">Играть</button>
+        </div>
+
+        
+        <div class="map-area" id="mapArea">
+            <iframe id="map" width="50%" height="100%" style="border:0;border-radius: 15px;" allowfullscreen loading="lazy"></iframe>
+
+           
+            <div id="clickLayer">
+                <div id="marker"></div>
+            </div>
+        </div>
+        <div class="action-area" id="actionArea">
+            <button class="btnDone" id="doneBtn">Выполнено</button>
+        </div>
+        <h1 class="lvl" id="lvl">Level</h1>
+        <div class="xp-container">
+            <div class="xp-bar" id="xpBar"></div>
+        </div>
+        <h1 id="xpText" class="xpText">XP: 0 / 100</h1>
+        <hr>
+        <h1 class="table">Таблица лидеров!</h1>
+        <div class="table2">
+                
+        </div>
+        <button class="btn2">
+            Выйти
+        </button>
+
+
+
+
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
