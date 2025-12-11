@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<div class="auth-container">
+    <form class="auth-form" id="regForm">
+        <h2>Создать аккаунт</h2>
+
+        <div class="input-group">
+            <label for="reg_username">Логин</label>
+            <input id="reg_username" type="text" placeholder="Введите логин">
+            <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group">
+            <label for="reg_password">Пароль</label>
+            <input id="reg_password" type="password" placeholder="Введите пароль">
+            <small class="error-msg"></small>
+        </div>
+
+        <button type="submit">Регистрация</button>
+
+        <p class="switch"><a href="login.html">Уже есть аккаунт? Вход</a></p>
+        <div id="reg_msg" class="server-msg"></div>
+    </form>
+</div>
+
+<script src="register.js"></script>
+</body>
+</html>

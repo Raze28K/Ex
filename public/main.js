@@ -93,3 +93,29 @@ if (doneBtn) doneBtn.onclick = () => {
 // Инициализируем отображение при загрузке страницы
 updateLevelDOM();
 updateXPDOM();
+
+function addXP(amount) {
+    currentXP += amount;
+
+    while (currentXP >= 100) { // если переполнение — уровень вверх
+        currentXP -= 100;
+        level++;
+    }
+
+    updateXPDOM();
+    updateLevelDOM();
+
+    const user_id = localStorage.getItem("user_id");
+    if (user_id) {
+        fetch("/api/update_level", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_id, level })
+        });
+        fetch("/api/update_xp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_id, xp: currentXP })
+        });
+    }
+}

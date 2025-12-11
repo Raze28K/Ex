@@ -28,53 +28,51 @@ function authMiddleware(req, res, next) {
 }
 
 
-app.post("/reg",async(req,res) =>{
-    const { username, password } = req.body;
+app.post("/reg", async (req, res) => {
+  const { username, password } = req.body;
 
+  try {
     const hash = await bcrypt.hash(password, 10);
-    try {
-       const result = await pool.query(`
-            INSERT INTO users (user_name, password)
-            VALUES ($1, $2)
-            
-        `,
-        // ДОЛЛАРЫ ОБОЗНАЧАЮТ ЗНАЧЕНИЕ ИЗ СТРОК(имя пароль и тд)
-            [username, hash]
-        );
-        res.json({ message: "Регистрация успешна" });
-    }
-    catch (err) {
-        res.status(400).json({ message: "Пользователь уже существует" });
-    }
-    
-})
 
-app.post("/level",async(req,res) =>{
-    const {level, Experience } = req.body;
+    await pool.query(`
+      INSERT INTO users (username, password)
+      VALUES ($1, $2)
+    `, [username, hash]);
 
-    
+    res.json({ message: "Регистрация успешна" });
+
+  } catch (err) {
+    console.log(err); // ← покажет реальную ошибку
+
+    if (err.code === "23505") {
+      return res.status(400).json({ message: "Пользователь уже существует" });
+    }
+
+    return res.status(500).json({ message: "Ошибка сервера" });
+  }
+});
+
+app.post("/api/update_level", async (req, res) => {
+    const { user_id, level } = req.body;
     try {
-       const result = await pool.query(`
-            SELECT FROM users (level, Experience)
-            VALUES ($1, $2)
-            
-        `,
-        // ДОЛЛАРЫ ОБОЗНАЧАЮТ ЗНАЧЕНИЕ ИЗ СТРОК(имя пароль и тд)
-            [level,Experience]
+        await pool.query(
+            `UPDATE users SET level = $1 WHERE id = $2`,
+            [level, user_id]
         );
-        
+        res.json({ message: "Уровень обновлён" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Ошибка сервера" });
     }
-    catch (err) {
-        res.status(400).json({ message: "Данные не найдены!" });
-    }
-    
-})
+});
+
+
 
 app.post("/log",async(req,res) =>{
     const { username, password } = req.body;
 
     const result = await pool.query(
-    `SELECT * FROM users WHERE user_name = $1`,
+    `SELECT * FROM users WHERE username = $1`,
     [username]
   );
         if (result.rows.length === 0)
@@ -111,6 +109,33 @@ app.get("/users", async(req, res) =>{
 //     res.json(result.rows)
 // })
 
+app.post("/api/update_level", async (req, res) => {
+    const { user_id, level } = req.body; // берём id пользователя и новый уровень
+    try {
+        await pool.query(
+            `UPDATE users SET level = $1 WHERE id = $2`,
+            [level, user_id]
+        );
+        res.json({ message: "Уровень обновлён" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Ошибка сервера" });
+    }
+});
+
+app.post("/api/update_xp", async (req, res) => {
+    const { user_id, xp } = req.body;
+    try {
+        await pool.query(
+            `UPDATE users SET xp = $1 WHERE id = $2`,
+            [xp, user_id]
+        );
+        res.json({ message: "XP обновлён" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Ошибка сервера" });
+    }
+});
 
 
 app.listen(3000, ()=>{
